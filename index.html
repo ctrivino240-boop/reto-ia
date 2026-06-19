@@ -1,0 +1,298 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Reto IA 21 – 21 días para transformar tu negocio con IA | Tribah IA</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy:     #1B2A4A;
+    --blue:     #3B6FE8;
+    --bg-soft:  #EEF2FA;
+    --white:    #FFFFFF;
+    --text:     #1B2A4A;
+    --mid:      #5A6A8A;
+    --border:   #D4DCF0;
+    --radius:   50px;
+    --radius-card: 16px;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--white); color: var(--text); font-size: 16px; line-height: 1.6; overflow-x: hidden; }
+
+  .topbar { background: var(--navy); color: rgba(255,255,255,.85); text-align: center; padding: 10px 16px; font-size: 13px; font-weight: 500; }
+  .topbar span { color: #7EB3FF; font-weight: 600; }
+
+  nav { display: flex; align-items: center; justify-content: space-between; padding: 18px 6%; background: var(--white); border-bottom: 1px solid var(--border); position: sticky; top: 0; z-index: 99; }
+  .logo { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--navy); text-decoration: none; }
+  .logo span { color: var(--blue); }
+  .nav-cta { background: var(--navy); color: #fff; border: none; padding: 11px 24px; border-radius: var(--radius); font-weight: 600; font-size: 13px; cursor: pointer; text-decoration: none; letter-spacing: .04em; text-transform: uppercase; transition: background .2s; }
+  .nav-cta:hover { background: var(--blue); }
+
+  .hero { background: var(--navy); padding: 80px 6% 72px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; width: 500px; height: 500px; background: radial-gradient(circle, rgba(59,111,232,.3) 0%, transparent 70%); top: -80px; left: 50%; transform: translateX(-50%); pointer-events: none; }
+  .hero-eyebrow { display: inline-block; background: rgba(126,179,255,.15); border: 1px solid rgba(126,179,255,.3); color: #7EB3FF; font-size: 12px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; padding: 6px 18px; border-radius: var(--radius); margin-bottom: 28px; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: clamp(34px, 5vw, 58px); line-height: 1.1; color: #fff; max-width: 780px; margin: 0 auto 22px; }
+  .hero h1 em { color: #7EB3FF; font-style: italic; }
+  .hero-sub { color: rgba(255,255,255,.75); font-size: 18px; max-width: 540px; margin: 0 auto 48px; }
+
+  .countdown { display: flex; justify-content: center; gap: 20px; margin-bottom: 48px; flex-wrap: wrap; }
+  .day-badge { background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); border-radius: var(--radius-card); padding: 16px 20px; text-align: center; min-width: 80px; }
+  .day-num { font-family: 'DM Serif Display', serif; font-size: 28px; color: #7EB3FF; }
+  .day-label { font-size: 11px; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+
+  .cta-group { display: flex; flex-direction: column; align-items: center; gap: 14px; }
+  .btn-primary { display: inline-block; background: var(--blue); color: #fff; padding: 17px 40px; border-radius: var(--radius); font-weight: 700; font-size: 15px; text-decoration: none; letter-spacing: .05em; text-transform: uppercase; transition: background .2s, transform .15s; box-shadow: 0 8px 32px rgba(59,111,232,.4); }
+  .btn-primary:hover { background: #2a5fd4; transform: translateY(-2px); }
+  .btn-outline-white { display: inline-block; border: 2px solid rgba(255,255,255,.3); color: rgba(255,255,255,.85); padding: 14px 32px; border-radius: var(--radius); font-weight: 600; font-size: 14px; text-decoration: none; letter-spacing: .04em; text-transform: uppercase; transition: all .2s; }
+  .btn-outline-white:hover { border-color: #fff; color: #fff; }
+  .cta-note { font-size: 12px; color: rgba(255,255,255,.4); }
+
+  .proof-strip { background: var(--bg-soft); border-bottom: 1px solid var(--border); padding: 16px 6%; display: flex; align-items: center; justify-content: center; gap: 28px; flex-wrap: wrap; font-size: 13px; color: var(--mid); font-weight: 500; }
+  .proof-strip strong { color: var(--navy); }
+  .proof-dot { color: var(--border); }
+
+  section { padding: 72px 6%; }
+  .section-label { font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  h2 { font-family: 'DM Serif Display', serif; font-size: clamp(28px, 3.5vw, 44px); color: var(--navy); line-height: 1.15; margin-bottom: 14px; }
+  .section-sub { color: var(--mid); font-size: 17px; max-width: 540px; margin-bottom: 44px; }
+
+  .for-who { background: var(--white); }
+  .who-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin-top: 40px; }
+  .who-card { background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 24px; text-align: center; }
+  .who-icon { font-size: 32px; margin-bottom: 12px; }
+  .who-card h3 { font-family: 'DM Serif Display', serif; font-size: 18px; color: var(--navy); margin-bottom: 8px; }
+  .who-card p { font-size: 14px; color: var(--mid); }
+
+  .program { background: var(--bg-soft); }
+  .weeks { display: flex; flex-direction: column; gap: 20px; max-width: 700px; }
+  .week { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 24px 28px; display: flex; gap: 20px; align-items: flex-start; }
+  .week-num { flex-shrink: 0; background: var(--navy); color: #fff; border-radius: 10px; padding: 8px 14px; font-family: 'DM Serif Display', serif; font-size: 14px; text-align: center; line-height: 1.3; }
+  .week-num span { display: block; font-size: 10px; opacity: .6; text-transform: uppercase; letter-spacing: .06em; }
+  .week h3 { font-family: 'DM Serif Display', serif; font-size: 19px; color: var(--navy); margin-bottom: 6px; }
+  .week p { font-size: 14px; color: var(--mid); }
+
+  .includes { background: var(--white); }
+  .includes-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-top: 40px; }
+  .include-item { display: flex; align-items: center; gap: 12px; background: var(--bg-soft); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 16px 18px; }
+  .check { flex-shrink: 0; width: 22px; height: 22px; background: var(--navy); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .include-item p { font-size: 14px; font-weight: 600; color: var(--navy); }
+
+  .results { background: var(--navy); }
+  .results h2 { color: #fff; }
+  .results .section-label { color: #7EB3FF; }
+  .results-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 40px; }
+  .result-card { background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12); border-radius: var(--radius-card); padding: 28px 22px; text-align: center; }
+  .result-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: #7EB3FF; margin-bottom: 8px; }
+  .result-label { font-size: 13px; color: rgba(255,255,255,.6); }
+
+  .guarantee { background: var(--bg-soft); display: flex; align-items: center; gap: 40px; flex-wrap: wrap; }
+  .guarantee-badge { flex-shrink: 0; width: 120px; height: 120px; background: var(--navy); border-radius: 50%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: #fff; text-align: center; }
+  .guarantee-badge .days { font-family: 'DM Serif Display', serif; font-size: 34px; color: #7EB3FF; }
+  .guarantee-badge .dias { font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.6); }
+  .guarantee-text h3 { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin-bottom: 10px; }
+  .guarantee-text p { color: var(--mid); font-size: 15px; max-width: 520px; }
+
+  .pricing { background: var(--white); text-align: center; }
+  .price-card { max-width: 420px; margin: 40px auto 0; background: var(--bg-soft); border: 2px solid var(--navy); border-radius: 20px; padding: 40px; }
+  .price-eyebrow { font-size: 12px; color: var(--mid); font-weight: 500; margin-bottom: 8px; text-transform: uppercase; letter-spacing: .08em; }
+  .price-tag { font-family: 'DM Serif Display', serif; font-size: 60px; color: var(--navy); margin: 12px 0 4px; }
+  .price-tag sup { font-size: 28px; vertical-align: top; margin-top: 16px; }
+  .price-sub { color: var(--mid); font-size: 13px; margin-bottom: 28px; }
+  .price-divider { border: none; border-top: 1px solid var(--border); margin: 22px 0; }
+
+  .faq { background: var(--bg-soft); }
+  .faq-list { max-width: 660px; margin-top: 40px; }
+  details { border-bottom: 1px solid var(--border); padding: 20px 0; }
+  summary { font-weight: 600; font-size: 15px; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; color: var(--navy); }
+  summary::after { content: '+'; font-size: 20px; color: var(--blue); }
+  details[open] summary::after { content: '−'; }
+  details p { color: var(--mid); font-size: 14px; margin-top: 12px; }
+
+  .final-cta { background: var(--blue); color: #fff; text-align: center; padding: 80px 6%; }
+  .final-cta h2 { color: #fff; margin-bottom: 12px; }
+  .final-cta p { color: rgba(255,255,255,.8); font-size: 17px; margin-bottom: 36px; }
+  .btn-white { display: inline-block; background: #fff; color: var(--navy); padding: 17px 44px; border-radius: var(--radius); font-weight: 700; font-size: 14px; text-decoration: none; letter-spacing: .05em; text-transform: uppercase; transition: transform .15s; }
+  .btn-white:hover { transform: translateY(-2px); }
+
+  footer { background: #111A2E; color: rgba(255,255,255,.35); text-align: center; padding: 28px 6%; font-size: 12px; }
+  footer a { color: rgba(255,255,255,.35); }
+
+  @media (max-width: 600px) {
+    .countdown { gap: 12px; }
+    .guarantee { flex-direction: column; text-align: center; }
+    .guarantee-badge { margin: 0 auto; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  🔥 Programa intensivo de <strong>21 días</strong> — <span>Resultados reales desde la primera semana</span>
+</div>
+
+<nav>
+  <a class="logo" href="https://ia.tri-bah.com">Tribah <span>IA</span></a>
+  <a class="nav-cta" href="https://go.hotmart.com/Q105970840J?ap=3492" target="_blank">Ver programa →</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Reto IA 21 · Solo $69 USD</div>
+  <h1>21 días para dominar la IA y <em>generar tus primeros ingresos digitales</em></h1>
+  <p class="hero-sub">Un programa intensivo y práctico donde aprenderás a crear productos digitales, automatizar tareas y generar ingresos — incluso sin experiencia previa.</p>
+
+  <div class="countdown">
+    <div class="day-badge"><div class="day-num">7</div><div class="day-label">Días IA Básica</div></div>
+    <div class="day-badge"><div class="day-num">7</div><div class="day-label">Días Productos</div></div>
+    <div class="day-badge"><div class="day-num">7</div><div class="day-label">Días Ingresos</div></div>
+  </div>
+
+  <div class="cta-group">
+    <a class="btn-primary" href="https://go.hotmart.com/Q105970840J?ap=3492" target="_blank">🚀 Quiero unirme al Reto IA</a>
+    <a class="btn-outline-white" href="https://go.hotmart.com/Q105970840J?ap=0d54" target="_blank">Acceso directo — $69 USD</a>
+    <span class="cta-note">Acceso inmediato · Sin experiencia previa · Garantía incluida</span>
+  </div>
+</section>
+
+<div class="proof-strip">
+  <span>✅ Programa verificado en Hotmart</span>
+  <span class="proof-dot">·</span>
+  <span>✅ <strong>21 días</strong> de entrenamiento práctico</span>
+  <span class="proof-dot">·</span>
+  <span>✅ Sin experiencia previa necesaria</span>
+  <span class="proof-dot">·</span>
+  <span>✅ Resultados desde la semana 1</span>
+</div>
+
+<section class="for-who">
+  <div class="section-label">¿Es para ti?</div>
+  <h2>Este reto es ideal si eres...</h2>
+  <div class="who-grid">
+    <div class="who-card"><div class="who-icon">👨‍💼</div><h3>Emprendedor</h3><p>Quieres resultados reales y rápidos sin perder meses aprendiendo tecnología</p></div>
+    <div class="who-card"><div class="who-icon">👩‍💻</div><h3>Sin experiencia</h3><p>Nunca has usado IA pero sabes que es el futuro y quieres estar del lado correcto</p></div>
+    <div class="who-card"><div class="who-icon">⏰</div><h3>Ocupado</h3><p>Tienes poco tiempo y necesitas un sistema que trabaje por ti de forma automatizada</p></div>
+    <div class="who-card"><div class="who-icon">💡</div><h3>Con ideas</h3><p>Tienes ideas pero no sabes cómo convertirlas en productos digitales que generen ingresos</p></div>
+  </div>
+</section>
+
+<section class="program">
+  <div class="section-label">El programa</div>
+  <h2>21 días. 3 semanas. Una transformación.</h2>
+  <p class="section-sub">Cada semana tiene un objetivo claro y resultados tangibles.</p>
+  <div class="weeks">
+    <div class="week">
+      <div class="week-num"><span>Semana</span>1</div>
+      <div>
+        <h3>Domina la Inteligencia Artificial</h3>
+        <p>Aprende a usar las herramientas de IA más poderosas del mercado para automatizar tareas, crear contenido y ahorrar horas de trabajo desde el primer día.</p>
+      </div>
+    </div>
+    <div class="week">
+      <div class="week-num"><span>Semana</span>2</div>
+      <div>
+        <h3>Crea tu Producto Digital</h3>
+        <p>Diseña y lanza tu primer producto digital usando IA. Desde la idea hasta el producto listo para vender — sin necesidad de ser experto en tecnología.</p>
+      </div>
+    </div>
+    <div class="week">
+      <div class="week-num"><span>Semana</span>3</div>
+      <div>
+        <h3>Genera tus Primeros Ingresos</h3>
+        <p>Activa tu sistema de ventas, atrae tus primeros clientes y genera ingresos reales. Con estrategias probadas tanto orgánicas como de publicidad.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="includes">
+  <div class="section-label">Todo incluido</div>
+  <h2>Lo que recibes al unirte</h2>
+  <div class="includes-grid">
+    <div class="include-item"><div class="check">✓</div><p>21 días de entrenamiento práctico en vivo</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Herramientas de IA para automatizar tu negocio</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Sistema para crear productos digitales con IA</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Estrategia de ventas orgánica y pagada</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Comunidad privada de participantes activos</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Soporte y acompañamiento durante los 21 días</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Acceso a grabaciones y material de apoyo</p></div>
+    <div class="include-item"><div class="check">✓</div><p>Plan de acción personalizado para tu negocio</p></div>
+  </div>
+</section>
+
+<section class="results">
+  <div class="section-label">Por qué funciona</div>
+  <h2>Números que hablan por sí solos</h2>
+  <div class="results-grid">
+    <div class="result-card"><div class="result-num">21</div><div class="result-label">Días de entrenamiento intensivo</div></div>
+    <div class="result-card"><div class="result-num">$69</div><div class="result-label">Inversión única — sin costos ocultos</div></div>
+    <div class="result-card"><div class="result-num">3x</div><div class="result-label">Áreas clave: IA, Producto e Ingresos</div></div>
+    <div class="result-card"><div class="result-num">24/7</div><div class="result-label">Acceso al material y la comunidad</div></div>
+  </div>
+</section>
+
+<section class="guarantee">
+  <div class="guarantee-badge">
+    <div class="days">7</div>
+    <div class="dias">días</div>
+  </div>
+  <div class="guarantee-text">
+    <h3>Sin riesgo. Garantía total.</h3>
+    <p>Tienes <strong>7 días</strong> de garantía completa sin preguntas. Si en la primera semana sientes que el programa no es para ti, te devolvemos el 100% de tu inversión. Sin complicaciones.</p>
+  </div>
+</section>
+
+<section class="pricing">
+  <div class="section-label">Inversión</div>
+  <h2>21 días que pueden cambiar tu rumbo</h2>
+  <div class="price-card">
+    <div class="price-eyebrow">Acceso completo · Reto IA 21 Días</div>
+    <div class="price-tag"><sup>$</sup>69</div>
+    <div class="price-sub">USD · Pago único · Acceso inmediato</div>
+    <a class="btn-primary" style="display:block;text-align:center;" href="https://go.hotmart.com/Q105970840J?ap=3492" target="_blank">🚀 Unirme al Reto IA ahora</a>
+    <hr class="price-divider" />
+    <a style="display:block;text-align:center;border:2px solid var(--navy);color:var(--navy);padding:14px 32px;border-radius:var(--radius);font-weight:600;font-size:14px;text-decoration:none;letter-spacing:.04em;text-transform:uppercase;" href="https://go.hotmart.com/Q105970840J?ap=0d54" target="_blank">Checkout directo — $69 USD</a>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="section-label">Preguntas frecuentes</div>
+  <h2>Lo que todos preguntan</h2>
+  <div class="faq-list">
+    <details>
+      <summary>¿Necesito experiencia previa con IA o tecnología?</summary>
+      <p>No. El Reto IA está diseñado para personas que parten desde cero. Te guiamos paso a paso desde los conceptos básicos hasta la generación de ingresos.</p>
+    </details>
+    <details>
+      <summary>¿Cuánto tiempo al día necesito dedicar?</summary>
+      <p>El programa está diseñado para personas ocupadas. Con 1-2 horas diarias es suficiente para completar el reto y ver resultados reales.</p>
+    </details>
+    <details>
+      <summary>¿Qué tipo de productos digitales voy a crear?</summary>
+      <p>Aprenderás a crear diferentes tipos de productos digitales usando IA: cursos, ebooks, herramientas, y más. El programa te guía para elegir el mejor según tu perfil.</p>
+    </details>
+    <details>
+      <summary>¿Puedo acceder al contenido a mi propio ritmo?</summary>
+      <p>Sí. Tendrás acceso a todas las grabaciones y materiales para que puedas avanzar a tu propio ritmo, aunque recomendamos seguir el programa en los 21 días para mejores resultados.</p>
+    </details>
+    <details>
+      <summary>¿Qué pasa si no me convence?</summary>
+      <p>Tienes 7 días de garantía total sin preguntas. Si en la primera semana no estás satisfecho, te devolvemos el 100% de tu inversión.</p>
+    </details>
+  </div>
+</section>
+
+<section class="final-cta">
+  <h2>21 días. Una decisión.<br/>Un nuevo camino.</h2>
+  <p>Únete ahora y empieza a construir tu negocio digital con inteligencia artificial.</p>
+  <a class="btn-white" href="https://go.hotmart.com/Q105970840J?ap=3492" target="_blank">🚀 Quiero unirme al Reto IA</a>
+</section>
+
+<footer>
+  <p>© 2026 Tribah IA · Soluciones Digitales · <a href="#">Política de privacidad</a><br/>
+  Tribah IA puede recibir comisión por compras realizadas desde esta página. Los resultados dependen del esfuerzo, dedicación y habilidades de cada persona.</p>
+</footer>
+
+</body>
+</html>
